@@ -1,4 +1,4 @@
-# 🫁 iCantBreathe
+# 🫁 iCan't Breathe
   
 in memory of george floyd
 
@@ -33,19 +33,21 @@ Collect bananas 🟡 and coconuts 🥥, avoid enemies ❌, and keep your breath 
 
 ```
 George_Floyd/
+│
+├── app.py                        
 ├── images/
 │   ├── banana.png
 │   ├── coconut.png
 │   ├── capsule.png
 │   ├── enemy.png
-│   ├── player.png
+│   └── player.png
 ├── sounds/
 │   ├── banana.wav
 │   ├── coconut.wav
 │   ├── capsule.wav
 │   ├── hit.wav
-├── app.py
-├── README.md
+│   └── bg_music_quiet.mp3
+└── README.md
 ```
 
 ---
