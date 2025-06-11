@@ -3,11 +3,9 @@ import pygame
 import sys
 import random
 
-# === Setup ===
 pygame.init()
 pygame.mixer.init()
 
-# === Sound Controller ===
 class SoundController:
     def __init__(self):
         self.current_sound = None
@@ -22,7 +20,6 @@ class SoundController:
         self.current_channel = sound.play()
         self.current_sound = sound
 
-# === Music ===
 try:
     pygame.mixer.music.load("sounds/bg_music_quiet.mp3")
     pygame.mixer.music.set_volume(0.05)
@@ -30,12 +27,10 @@ try:
 except Exception as e:
     print(f"Error loading music: {e}")
 
-# === Display ===
 WIDTH, HEIGHT = 600, 800
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("I Can't Breathe")
 
-# === Asset loading ===
 def load_scaled_image(path, width=96):
     img = pygame.image.load(path).convert_alpha()
     height = int(img.get_height() * (width / img.get_width()))
@@ -64,7 +59,6 @@ hit_sound = load_sound("sounds/hit.wav", volume=0.6)
 
 sound_player = SoundController()
 
-# === Game setup ===
 clock = pygame.time.Clock()
 font = pygame.font.SysFont(None, 36)
 large_font = pygame.font.SysFont(None, 72)
@@ -138,7 +132,6 @@ def reset_game():
     items.clear()
     frame_counter = 0
 
-# === Game Loop ===
 running = True
 while running:
     if game_state == "menu":
