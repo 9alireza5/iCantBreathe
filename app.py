@@ -85,7 +85,6 @@ frame_counter = 0
 game_state = "menu"
 player_direction = "idle"
 
-# === Game functions ===
 def spawn_item():
     item = random.choices(item_types, weights=weights)[0]
     rect = item[1].get_rect()
@@ -106,7 +105,7 @@ def draw_health():
 
 def draw_menu():
     screen.fill((135, 206, 250))
-    text = large_font.render("Monkey Survivor", True, (0, 0, 0))
+    text = large_font.render("SHAHID George Floyd!", True, (0, 0, 0))
     prompt = font.render("Press SPACE to Start", True, (0, 0, 0))
     screen.blit(text, (WIDTH // 2 - text.get_width() // 2, HEIGHT // 3))
     screen.blit(prompt, (WIDTH // 2 - prompt.get_width() // 2, HEIGHT // 2))
