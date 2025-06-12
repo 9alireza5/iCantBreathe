@@ -1,4 +1,3 @@
-
 import pygame
 import sys
 import random
@@ -22,7 +21,7 @@ class SoundController:
 
 try:
     pygame.mixer.music.load("sounds/bg_music_quiet.mp3")
-    pygame.mixer.music.set_volume(0.05)
+    pygame.mixer.music.set_volume(0.07)
     pygame.mixer.music.play(-1)
 except Exception as e:
     print(f"Error loading music: {e}")
@@ -36,6 +35,11 @@ def load_scaled_image(path, width=96):
     height = int(img.get_height() * (width / img.get_width()))
     return pygame.transform.scale(img, (width, height))
 
+def load_image_fullscreen(path):
+    img = pygame.image.load(path).convert()
+    return pygame.transform.scale(img, (WIDTH, HEIGHT))
+
+background_img = load_image_fullscreen("images/background.jpg")
 player_img_idle = load_scaled_image("images/player.png")
 player_img_left = pygame.transform.flip(player_img_idle, True, False)
 player_img_right = player_img_idle
@@ -104,7 +108,7 @@ def draw_health():
         screen.blit(heart, (WIDTH - (i+1)*30, 20))
 
 def draw_menu():
-    screen.fill((135, 206, 250))
+    screen.blit(background_img, (0, 0))
     text = large_font.render("SHAHID George Floyd!", True, (0, 0, 0))
     prompt = font.render("Press SPACE to Start", True, (0, 0, 0))
     screen.blit(text, (WIDTH // 2 - text.get_width() // 2, HEIGHT // 3))
@@ -112,7 +116,7 @@ def draw_menu():
     pygame.display.flip()
 
 def draw_gameover():
-    screen.fill((0, 0, 0))
+    screen.blit(background_img, (0, 0))
     text = large_font.render("Game Over", True, (255, 0, 0))
     final_score = font.render(f"Score: {score}", True, (255, 255, 255))
     prompt = font.render("Press R to Restart", True, (255, 255, 255))
@@ -138,7 +142,7 @@ while running:
     elif game_state == "gameover":
         draw_gameover()
     else:
-        screen.fill((135, 206, 250))
+        screen.blit(background_img, (0, 0))
 
         keys = pygame.key.get_pressed()
         if (keys[pygame.K_a] or keys[pygame.K_LEFT]) and player_rect.left > 0:
